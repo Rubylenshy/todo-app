@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <title>Frontend Mentor | Todo app</title>
+
+</head>
+<body class="">
+
+  <main class="body">
+    <header class="flex">
+      <h1>TODO</h1>
+      <button class="toggler flex" title="Toggler">
+        <img src="assets/images/icon-moon.svg" alt="Moon">
+        <img src="assets/images/icon-sun.svg" alt="Sun">
+      </button>
+    </header>
+  
+    <main class="container">
+
+      <div class="new-todo flex">
+        <div class="radio-btn"><img src="assets/images/icon-check.svg" alt="Check"></div>
+        <input type="text" id="new-todo" placeholder="Create a new task...">
+      </div>
+
+      <div class="todo_bg_links">
+        <div class="todo-body-list">
+          <div class="todo-item flex">
+            <div class="radio_task flex">
+              <div class="radio-btn"><img src="assets/images/icon-check.svg" alt="Check"></div>
+              <p class="task">Complete online JavaScript course</p>
+            </div>
+            <img src="assets/images/icon-cross.svg" alt="" class="cancel">
+          </div>
+          <hr>
+        </div>
+
+        <div class="items_archive flex">
+          <p><span id="items-left">0</span> items left</p>
+          <div class="lists-desktop">
+            <a href="" class="active">All</a>
+            <a href="">Active</a>
+            <a href="">Archive</a>
+          </div>
+          <span class="archive-completed"><a href="">Archive Completed</a></span>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      
+      <div class="lists flex">
+        <a href="" class="active">All</a>
+        <a href="">Active</a>
+        <a href="">Archive</a>
+      </div> 
+  
+    </footer>
+
+  </main>
+
+  <footer class="drag-instruction">
+    <p>Drag and drop to reorder list</p>
+  </footer>
+  
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
