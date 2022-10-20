@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
 
 :root{
     --bright-blue: hsl(220, 98%, 61%);
@@ -8,7 +8,7 @@
     --vl-gray: hsl(0, 3%, 93%);
     --vl-grayish-blue: hsl(236, 33%, 92%);
     --light-gayish-blue: hsl(233, 11%, 84%);
-    --dark-grayish-blue: hsl(236, 9%, 61%);
+    --ddark-grayish-blue: hsl(236, 9%, 61%);
     --vd-grayish-blue: hsl(235, 19%, 35%);
 
     /* Dark settings */
@@ -17,8 +17,6 @@
     --light-grayish-blue: hsl(234, 39%, 85%);
     --light-grayish-blue-hover: hsl(236, 33%, 92%);
     --dark-grayish-blue: hsl(234, 11%, 52%);
-    --vd-grayish-blue: hsl(233, 14%, 35%);
-    --vd-grayish-blue: hsl(237, 14%, 26%);
 
     --ff-josefin: 'Josefin Sans', sans-serif;
     --fw-400: 400;
@@ -60,6 +58,7 @@ body{
 .flex{
     display: flex;
 }
+
 a{
     text-decoration: none;
     color: inherit;
@@ -85,7 +84,7 @@ header{
     padding: 40px 0;
 }
 header h1{
-    letter-spacing: 15px;
+    letter-spacing: 12px;
     color: var(--vl-gray);
 }
 .toggler,
@@ -193,6 +192,7 @@ html.dark .archive-completed a:hover{
 }
 .radio-btn.checked{
     background-image: var(--linear-gradient);
+    border: none;
 }
 #new-todo{
     width: 100%;
@@ -219,6 +219,11 @@ hr{
 }
 .task{
     margin-right: 15px;
+    font-size: 12px;
+}
+.task.line{
+    text-decoration: line-through;
+    color: var(--ddark-grayish-blue);
 }
 .todo-item,
 .items_archive{
@@ -226,6 +231,11 @@ hr{
     padding: 20px;
     justify-content: space-between;
 }
+.todo-item.dbclick{
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.3);
+    cursor: grab;
+}
+
 .lists-desktop{
     display: none;
 }
