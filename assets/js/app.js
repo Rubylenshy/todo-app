@@ -50,6 +50,15 @@ function showArchive() {
     countArchive();
 }
 
+function zeroItems(){
+    if(document.querySelectorAll('.todo-item').length == 0){
+        document.querySelector('.items_archive').style.display = 'none';
+        document.querySelector('.empty-todo').style.display = 'block';
+        document.querySelector('.empty-todo h1').textContent = 'Got more tasks?';
+        document.querySelector('.empty-todo p').textContent = 'Make a list and get them done';
+
+    }
+}
 function count(){
     itemNumber.textContent = document.querySelectorAll('.todo-item').length
 }
@@ -60,6 +69,15 @@ function countArchive(){
     itemNumber.textContent = document.querySelectorAll('.todo-item.checked').length
 }
 
+document.querySelector('.archive-completed').addEventListener('click', ()=>{
+    document.querySelectorAll('.todo-item').forEach((todo) => {
+        if (todo.classList.contains('checked')) {
+            todo.remove()
+        }
+    });    
+    countArchive();
+    zeroItems();
+})
 toggler.addEventListener('click', ()=>{
     if (html.classList.contains('dark') == false) {
         dark();
@@ -71,13 +89,18 @@ toggler.addEventListener('click', ()=>{
 // New Todo
 todoInput.addEventListener("keyup", (e)=>{
     if (e.key == "Enter" || e.keyCode == 13){
-        document.querySelector('.items_archive').style.display = 'flex';
-        document.querySelector('.empty-todo').style.display = 'none';
-        newTodo();
-        count();
-        todoInput.value = '';
+        if (todoInput.value !== '' ) {
+            
+            document.querySelector('.items_archive').style.display = 'flex';
+            document.querySelector('.empty-todo').style.display = 'none';
+            newTodo();
+            count();
+            todoInput.value = '';
+        }
     }
 });
+
+let todoItems = [];
 
 function newTodo(){
     const todoItem = document.createElement('div');
@@ -114,29 +137,54 @@ function newTodo(){
 
     todoBody.appendChild(todoItem)
     todoBody.appendChild(hr)
+
+    function todoObject(){
+        if(todoInput.value !== ''){
+            const todo = {
+                text: todoInput.value,
+                checked: todoItem.classList.contains('checked'),
+                id: Date.now(),
+              };
+              todoItems.push(todo);
+        }
+    }
+
+    todoObject();
+
+    // Delete To-do Item
+    
+    todoBody.addEventListener('click', (remove)=>{
+        if (remove.target.className == 'cancel') {
+            const div = remove.target.parentElement;
+            div.parentNode.removeChild(div);
+            count();
+        }
+        else{
+            return itemNumber.textContent == 0 ? itemNumber.parentElement.style.visibility = 'hidden' 
+            : itemNumber.parentElement.style.visibility = 'visible' ;
+        }
+        zeroItems();
+    });
+
+    localStorage.setItem('todoItemsList', JSON.stringify(todoItems));
+    
 }
 
-// Delete To-do Item
-
-todoBody.addEventListener('click', (remove)=>{
-    if (remove.target.className == 'cancel') {
-        const div = remove.target.parentElement;
-        div.parentNode.removeChild(div)
-        div.parentNode.removeChild(hr); 
-        count();
-    }if(document.querySelectorAll('.todo-item').length == 0){
-        document.querySelector('.items_archive').style.display = 'none';
-        document.querySelector('.empty-todo').style.display = 'block';
-        document.querySelector('.empty-todo h1').textContent = 'Got more tasks?';
-        document.querySelector('.empty-todo p').textContent = 'Make a list and get them done';
-
-    }
-    else{
-        return itemNumber.textContent == 0 ? itemNumber.parentElement.style.visibility = 'hidden' 
-        : itemNumber.parentElement.style.visibility = 'visible' ;
-    }
-});
 
 window.addEventListener('load', ()=>{
     document.querySelector('.items_archive').style.display = 'none';
+
 })
+
+// document.addEventListener('DOMContentLoaded', () => {
+//     const savedTodo = localStorage.getItem('todoItemsList');
+//     if (savedTodo) {
+//       todoItems = JSON.parse(savedTodo);
+//       todoItems.forEach((todo) => {
+//         newTodo(todo);
+//       });
+//     }
+//     console.log(todoItems)
+
+//     // localStorage.clear()
+//   });
