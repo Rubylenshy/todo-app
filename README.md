@@ -27,7 +27,7 @@ Thanks for checking out this front-end coding challenge.
 
 ### Links
 
-- Live Site URL: [Todo App]()
+- Live Site URL: [Todo App](https://rubylenshy.github.io/todo-app/)
 
 ## Author
 
