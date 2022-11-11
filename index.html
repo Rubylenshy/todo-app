@@ -2,15 +2,13 @@
 <html lang="en" class="">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="assets/css/style.css">
   <title>Frontend Mentor | Todo app</title>
-
 </head>
 <body class="">
-
+  <!-- Todo Body -->
   <main class="body">
     <header class="flex">
       <h1>TODO</h1>
@@ -19,56 +17,48 @@
         <img src="assets/images/icon-sun.svg" alt="Sun">
       </button>
     </header>
-  
-    <main class="container">
-
+  <!-- Todo Body -->
+    <div class="container">
       <div class="new-todo flex">
         <div class="radio-btn"><img src="assets/images/icon-check.svg" alt="Check"></div>
         <input type="text" id="new-todo" placeholder="Create a new task...">
       </div>
-
+      <!-- Todo-item list -->
       <div class="todo_bg_links">
         <div class="todo-body-list">
-          <div class="todo-item flex">
-            <div class="radio_task flex">
-              <div class="radio-btn"><img src="assets/images/icon-check.svg" alt="Check"></div>
-              <p class="task">Complete online JavaScript course</p>
-            </div>
-            <img src="assets/images/icon-cross.svg" alt="" class="cancel">
-          </div>
-          <hr>
         </div>
-
+        <!-- Empty-todo -->
+        <div class="empty-todo">
+          <img src="assets/images/clipboard-check.svg" alt="Clipboard">
+          <img src="assets/images/clipboard-check-dark.svg" alt="Clipboard-dark">
+          <h1>Add your first todo</h1>
+          <p>What do you want to get done?</p>
+        </div>
+        <!-- Navigations-->
         <div class="items_archive flex">
-          <p><span id="items-left">0</span> items left</p>
+          <p><span id="items-left">0</span> item(s) left</p>
           <div class="lists-desktop">
-            <a href="" class="active">All</a>
-            <a href="">Active</a>
-            <a href="">Archive</a>
+            <div onclick="showAll()">All</div>
+            <div onclick="showActive()">Active</div>
+            <div onclick="showArchive()">Archive</div>
           </div>
-          <span class="archive-completed"><a href="">Archive Completed</a></span>
+          <div class="archive-completed">Clear Archive</div>
         </div>
       </div>
-    </main>
-
+    </div>
     <footer>
-      
       <div class="lists flex">
-        <a href="" class="active">All</a>
-        <a href="">Active</a>
-        <a href="">Archive</a>
+        <div  onclick="showAll()">All</div>
+        <div onclick="showActive()">Active</div>
+        <div onclick="showArchive()">Archive</div>
       </div> 
-  
     </footer>
-
   </main>
 
   <footer class="drag-instruction">
     <p>Drag and drop to reorder list</p>
   </footer>
-  
 
   <script src="assets/js/app.js"></script>
-  <script src="CoderbyteAss.js"></script>
 </body>
 </html>

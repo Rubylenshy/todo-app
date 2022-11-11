@@ -23,16 +23,6 @@
     --fw-700: 700;
 }
 
-/*
-.watched,.want-to-watch{
-    background: white;
-    padding: 30px;
-    width: 100%;
-    flex-shrink: 0;
-    transform: scale(1);
-}
-*/
-
 /* Presets */
 *{
     padding: 0;
@@ -63,11 +53,21 @@ a{
     text-decoration: none;
     color: inherit;
 }
-img[alt='Sun']{
+img[alt='Sun'],
+.radio-btn img,
+.empty-todo img:nth-child(1){
     display: none;
 }
-.radio-btn img{
-    display: none;
+.items_archive.flex{
+    display: flex;
+}
+.radio-btn.checked{
+    background: var(--linear-gradient);
+    border: none;
+}
+.todo-item.checked .task{
+    text-decoration: line-through;
+    color: var(--ddark-grayish-blue);
 }
 .radio-btn.checked img{
     display: block;
@@ -113,7 +113,10 @@ header h1{
     animation: anti-clockwise 1s;
 }
 .cancel{
-    height: 15px;
+    background: url(../images/trash3.svg) no-repeat;
+    background-size: cover;
+    height: 20px;
+    width: 20px;
 }
 
 /* Light Settings */
@@ -126,7 +129,8 @@ header h1{
     background: white;
 }
 .radio-btn{
-    border: 1px solid var(--light-grayish-blue);
+    border: 3px solid var(--light-grayish-blue);
+    min-width: 25px;
 }
 
 
@@ -142,7 +146,8 @@ html.dark body{
 html.dark .toggler{
     justify-content: flex-end;
 }
-html.dark #new-todo{
+html.dark #new-todo,
+html.dark #new-todo::placeholder{
     color: var(--vl-gray);
 }
 html.dark .new-todo,
@@ -159,19 +164,41 @@ html.dark .todo-item{
 html.dark .cancel{
     filter: brightness(5);
 }
-html.dark .lists a:hover,
-html.dark .lists-desktop a:hover{
+html.dark .lists div:hover,
+html.dark .lists-desktop div:hover{
     color: var(--light-grayish-blue-hover);
 }
-html.dark .lists a:focus,
-html.dark .lists-desktop a:focus{
+html.dark .lists div:focus,
+html.dark .lists-desktop div:focus{
     color: var(--bright-blue);
 }
-html.dark .archive-completed a:hover{
+html.dark .archive-completed,
+html.dark .items_archive p{
+    color: var(--light-gayish-blue);
+}
+html.dark .archive-completed:hover{
     color: var(--light-grayish-blue-hover);
 }
+html.dark .empty-todo{
+    color: var(--vl-gray);
+}
+html.dark .empty-todo img:nth-child(2){
+    display: none;
+}
+html.dark .empty-todo img:nth-child(1){
+    display: initial;
+}
 
-
+.empty-todo{
+    text-align: center;
+    padding: 30px 0;
+}
+.empty-todo img{
+    height: 80px;
+}
+.empty-todo h1{
+    margin: 20px 0 20px;
+}
 
 .new-todo{
     border-radius: 5px;
@@ -181,18 +208,14 @@ html.dark .archive-completed a:hover{
     font-size: 1.05em;
 }
 .radio-btn{
-    min-width: 25px;
-    min-height: 25px;
+    width: 25px;
+    height: 25px;
     border-radius: 50%;
     margin-right: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-.radio-btn.checked{
-    background-image: var(--linear-gradient);
-    border: none;
 }
 #new-todo{
     width: 100%;
@@ -219,11 +242,8 @@ hr{
 }
 .task{
     margin-right: 15px;
-    font-size: 12px;
-}
-.task.line{
-    text-decoration: line-through;
-    color: var(--ddark-grayish-blue);
+    font-size: 16px;
+    font-weight: 500;
 }
 .todo-item,
 .items_archive{
@@ -249,21 +269,21 @@ hr{
     padding: 20px 0;
     border-radius: 5px;
 }
-.lists a,
-.lists-desktop a{
+.lists div,
+.lists-desktop div{
     font-weight: var(--fw-700);
     color: var(--dark-grayish-blue);
     margin: 0 10px;
 }
-.lists a:hover,
-.lists-desktop a:hover{
+.lists div:hover,
+.lists-desktop div:hover{
     color: var(--vd-grayish-blue);
 }
-.lists a:focus,
-.lists-desktop a:focus{
+.lists div:focus,
+.lists-desktop div:focus{
     color: var(--bright-blue);
 }
-.archive-completed a:hover{
+.archive-completed:hover{
     color: var(--vd-grayish-blue);
 }
 
@@ -300,7 +320,7 @@ hr{
     }
 
     .lists-desktop{
-        display: initial;
+        display: flex;
     }
     .lists{
         display: none;

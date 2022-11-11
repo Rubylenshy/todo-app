@@ -15,7 +15,7 @@ Thanks for checking out this front-end coding challenge.
 
 ### Users Can
 
-Your users should be able to:
+Users can:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
