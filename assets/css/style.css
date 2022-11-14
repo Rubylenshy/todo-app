@@ -292,6 +292,10 @@ hr{
     margin: 40px 0;
     text-align: center;
     color: var(--dark-grayish-blue);
+    /* animation: marquee linear 1s infinite; */
+}
+.drag-instruction:hover{
+    animation-play-state: paused;
 }
 
 
@@ -353,4 +357,8 @@ hr{
     to{
         transform: rotate(360deg);
     }
+}
+@keyframes marquee {
+    from{transform: translateX(-100%)};
+    to{transform: translateX(100%)};
 }
